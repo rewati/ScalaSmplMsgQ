@@ -12,7 +12,7 @@ MAINTAINER Rewati Raman "rewati.raman@gmail.com"
 RUN apt-get update
 
 # Install software
-RUN apt-get install -y git sbt
+RUN apt-get install -y git
 # Make ssh dir
 #RUN mkdir /root/.ssh/
 #
@@ -27,6 +27,10 @@ RUN apt-get install -y git sbt
 # Clone the conf files into the docker container
 RUN git clone https://github.com/rewati/ScalaSmplMsgQ.git
 FROM anapsix/alpine-java
+RUN wget http://apt.typesafe.com/repo-deb-build-0002.deb
+RUN sudo dpkg -i repo-deb-build-0002.deb
+RUN sudo apt-get update
+RUN sudo apt-get install sbt
 RUN cd ScalaSmplMsgQ
 RUN sbt compile
 COPY ./target/scala-2.11/ScalaSmplMsgQ-assembly-1.0.jar ./ScalaSmplMsgQ-assembly-1.0.jar
