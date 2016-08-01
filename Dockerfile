@@ -1,4 +1,5 @@
 FROM anapsix/alpine-java
 MAINTAINER rewatiraman
-CMD ["java","-jar","./target/scala-2.11/ScalaSmplMsgQ-assembly-1.0.jar"]
+COPY ./target/scala-2.11/ScalaSmplMsgQ-assembly-1.0.jar ./ScalaSmplMsgQ-assembly-1.0.jar
+CMD ["java","-jar","./ScalaSmplMsgQ-assembly-1.0.jar"]
 

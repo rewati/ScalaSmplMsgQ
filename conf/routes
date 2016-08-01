@@ -1,5 +1,5 @@
 GET     /                           scalasmplmsgq.controller.Application.index
 POST    /queue                      scalasmplmsgq.controller.Application.createQueue
 POST    /consumer                   scalasmplmsgq.controller.Application.registerConsumerToQueue
-PUT     /queue/:qname                scalasmplmsgq.controller.Application.enqueue(qname: String)
+POST     /queue/:qname                scalasmplmsgq.controller.Application.enqueue(qname: String)
 GET     /queue/:qname/consumer/:cid   scalasmplmsgq.controller.Application.dequeue(qname: String,cid: String)

@@ -13,4 +13,18 @@ libraryDependencies ++= Seq(
 )
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
-    
+
+
+mainClass in assembly := Some("play.core.server.NettyServer")
+
+fullClasspath in assembly += Attributed.blank(PlayKeys.playPackageAssets.value)   
+assemblyMergeStrategy in assembly := {
+	case PathList(ps @ _*) if ps.last endsWith ".class" => MergeStrategy.first
+  	case "application.conf"                            => MergeStrategy.concat
+	case PathList(ps @ _*) if ps.last endsWith "netty.versions.properties" => MergeStrategy.first
+	case x =>
+    		val oldStrategy = (assemblyMergeStrategy in assembly).value
+    		oldStrategy(x)
+}
+
+ 
