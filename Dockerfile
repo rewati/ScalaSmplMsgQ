@@ -31,7 +31,7 @@ RUN apt-get update
 RUN apt-get install --reinstall dpkg
 FROM anapsix/alpine-java
 RUN wget http://apt.typesafe.com/repo-deb-build-0002.deb
-RUN ls -R /bin
+RUN ls -R /bin/sh
 RUN dpkg -i repo-deb-build-0002.deb
 RUN apt-get update
 RUN apt-get install sbt
