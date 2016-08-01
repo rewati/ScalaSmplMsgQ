@@ -26,6 +26,8 @@ RUN apt-get install -y git
 
 # Clone the conf files into the docker container
 RUN git clone https://github.com/rewati/ScalaSmplMsgQ.git
+RUN apt-get update
+RUN apt-get install --reinstall dpkg
 FROM anapsix/alpine-java
 RUN wget http://apt.typesafe.com/repo-deb-build-0002.deb
 RUN dpkg -i repo-deb-build-0002.deb
