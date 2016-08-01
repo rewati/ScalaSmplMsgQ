@@ -4,7 +4,8 @@
 #COPY ./target/scala-2.11/ScalaSmplMsgQ-assembly-1.0.jar ./ScalaSmplMsgQ-assembly-1.0.jar
 #CMD ["java","-jar","./ScalaSmplMsgQ-assembly-1.0.jar"]
 
-FROM ubuntu
+FROM ubuntu:14.04
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 MAINTAINER Rewati Raman "rewati.raman@gmail.com"
 
