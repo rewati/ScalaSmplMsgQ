@@ -27,6 +27,7 @@ RUN apt-get install -y git
 
 # Clone the conf files into the docker container
 RUN git clone https://github.com/rewati/ScalaSmplMsgQ.git
+RUN pwd
 RUN apt-get install -y wget
 RUN wget https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.13.12/sbt-launch.jar
 RUN mv sbt-launch.jar /bin
