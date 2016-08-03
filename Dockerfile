@@ -35,10 +35,10 @@ RUN echo #!/bin/bash > /bin/sbt
 RUN echo SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M" > /bin/sbt 
 RUN echo java $SBT_OPTS -jar `dirname $0`/sbt-launch.jar "$@" > /bin/sbt
 RUN chmod u+x /bin/sbt
-RUN cd /opt/
+RUN cd /opt
 RUN wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u91-b14/jdk-8u91-linux-x64.tar.gz"
 RUN tar xzf jdk-8u91-linux-x64.tar.gz
-RUN cd /opt/jdk1.8.0_91/
+RUN cd jdk1.8.0_91
 RUN alternatives --install /usr/bin/java java /opt/jdk1.8.0_91/bin/java 2
 RUN alternatives --config java
 RUN cd ScalaSmplMsgQ
