@@ -33,7 +33,7 @@ RUN mv sbt-launch.jar /bin
 RUN touch /bin/sbt
 RUN echo "#!/bin/bash" > /bin/sbt
 RUN echo SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M" > /bin/sbt 
-RUN echo java $SBT_OPTS -jar `dirname $0`/sbt-launch.jar "$@" > /bin/sbt
+RUN echo /opt/jdk1.8.0_91/bin/java $SBT_OPTS -jar `dirname $0`/sbt-launch.jar "$@" > /bin/sbt
 RUN chmod u+x /bin/sbt
 RUN cd /opt
 RUN wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u91-b14/jdk-8u91-linux-x64.tar.gz"
