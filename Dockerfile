@@ -27,14 +27,13 @@ RUN apt-get install -y git
 
 # Clone the conf files into the docker container
 RUN git clone https://github.com/rewati/ScalaSmplMsgQ.git
-RUN apt-get update
-RUN apt-get install --reinstall dpkg
-FROM anapsix/alpine-java
-RUN wget http://apt.typesafe.com/repo-deb-build-0002.deb
-RUN ls -R /bin/sh
-RUN dpkg -i repo-deb-build-0002.deb
-RUN apt-get update
-RUN apt-get install sbt
+RUN wget https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/0.13.12/sbt-launch.jar
+RUN mv sbt-launch.jar /bin
+RUN touch /bin/sbt
+RUN echo #!/bin/bash > /bin/sbt
+RUN echo SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M" > /bin/sbt 
+RUN echo java $SBT_OPTS -jar `dirname $0`/sbt-launch.jar "$@" > /bin/sbt
+RUN chmod u+x ~/bin/sbt
 RUN cd ScalaSmplMsgQ
 RUN sbt compile
 COPY ./target/scala-2.11/ScalaSmplMsgQ-assembly-1.0.jar ./ScalaSmplMsgQ-assembly-1.0.jar
