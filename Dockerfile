@@ -36,4 +36,4 @@ RUN echo SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:M
 RUN echo java $SBT_OPTS -jar `dirname $0`/sbt-launch.jar "$@" > /bin/sbt
 RUN chmod u+x /bin/sbt
 RUN cd ScalaSmplMsgQ
-CMD sbt run
+RUN sbt run
