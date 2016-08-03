@@ -41,5 +41,5 @@ RUN wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2
 RUN tar xzf jdk-8u91-linux-x64.tar.gz
 RUN cd jdk1.8.0_91
 RUN export PATH=$PATH:/opt/jdk1.8.0_91/bin
-RUN cd /root/ScalaSmplMsgQ
+RUN cd /ScalaSmplMsgQ
 RUN sbt run
