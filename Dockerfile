@@ -36,6 +36,4 @@ RUN echo SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:M
 RUN echo java $SBT_OPTS -jar `dirname $0`/sbt-launch.jar "$@" > /bin/sbt
 RUN chmod u+x /bin/sbt
 RUN cd ScalaSmplMsgQ
-RUN sbt compile
-COPY ./target/scala-2.11/ScalaSmplMsgQ-assembly-1.0.jar ./ScalaSmplMsgQ-assembly-1.0.jar
-CMD ["java","-jar","./ScalaSmplMsgQ-assembly-1.0.jar"]
+CMD sbt run
